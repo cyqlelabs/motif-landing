@@ -1,0 +1,121 @@
+{
+  "nav": {
+    "cta": "Próximamente"
+  },
+  "hero": {
+    "tagline": "Animación & Diseño",
+    "headline": "Creá con IA, no a través de ella.",
+    "description": "Otras herramientas le entregan todo a una caja negra. Motif te da un estudio visual completo y un agente de IA especializado que trabaja a tu lado — tu creatividad marca el rumbo mientras la IA se encarga del trabajo pesado.",
+    "cta": "Próximamente",
+    "scrollHint": "Descubrí cómo funciona"
+  },
+  "partnership": {
+    "label": "La Diferencia",
+    "heading": "Colaboración, No Delegación.",
+    "description": "Las herramientas prompt-to-video te sacan del proceso creativo. Los editores tradicionales te dejan haciendo todo solo. Motif no es ninguno de los dos — es un espacio compartido donde la imaginación humana y la expertise de la IA se encuentran.",
+    "cards": [
+      {
+        "side": "before",
+        "title": "Herramientas Prompt-to-Video",
+        "items": [
+          "Escribís un prompt y esperás que la IA adivine bien",
+          "Cero control sobre composición o timing",
+          "Todos los resultados se ven iguales",
+          "Tu visión creativa se pierde en la traducción"
+        ]
+      },
+      {
+        "side": "after",
+        "title": "Crear con Motif",
+        "items": [
+          "Diseñá con tus manos mientras la IA acelera tu trabajo",
+          "Control total — ajustá, sobreescribí, refiná lo que quieras",
+          "Tu estilo, tus decisiones, amplificadas por la IA",
+          "El agente se adapta a vos, no al revés"
+        ]
+      }
+    ]
+  },
+  "workflow": {
+    "label": "El Flujo de Trabajo",
+    "heading": "Vos Creás. La IA Amplifica.",
+    "description": "Empezá desde un canvas en blanco o una conversación — de cualquier manera, vos llevás el volante.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Empezá a Tu Manera",
+        "description": "Construí visualmente con drag-and-drop, pedile al agente IA que arme una escena, o combiná ambos. Vos elegís cuánto control creativo mantener en cada paso."
+      },
+      {
+        "number": "02",
+        "title": "Crear Juntos",
+        "description": "Trabajá codo a codo con el agente. Sugiere transiciones, genera assets y mejora el timing — vos aceptás, ajustás o sobreescribís. Cada decisión es tuya."
+      },
+      {
+        "number": "03",
+        "title": "Exportar & Publicar",
+        "description": "Renderizá video de calidad broadcast directo desde tu navegador. Sin software externo. Sin colas en la nube. Tu animación, tu huella creativa — lista para publicar."
+      }
+    ]
+  },
+  "ecosystem": {
+    "label": "El Motor",
+    "heading": "Lo Mejor de Ambos Mundos.",
+    "description": "La eficiencia y expertise de un agente IA entrenado. La originalidad y el gusto que solo un humano aporta. Juntos.",
+    "features": [
+      {
+        "title": "Socio Creativo IA",
+        "description": "No es una caja negra — es un colaborador. El agente sugiere, genera y refina, pero la última palabra siempre es tuya."
+      },
+      {
+        "title": "59 Presets de Motion",
+        "description": "Diez categorías de animaciones listas para producción — desde fades sutiles hasta decomposiciones cinematográficas. Aplicar con un clic, personalizar para hacerlas tuyas."
+      },
+      {
+        "title": "Edición Visual + Código",
+        "description": "Diseñá visualmente con controles drag-and-drop. Pasá a código para precisión total. Ambos se mantienen perfectamente sincronizados."
+      },
+      {
+        "title": "Preview Instantáneo",
+        "description": "Vé cada cambio mientras lo hacés. Sin espera de render, sin cola de preview. Lo que ves es lo que exportás."
+      },
+      {
+        "title": "Generación de Assets en Vivo",
+        "description": "¿Necesitás una forma, gradiente o elemento? Pedile al agente — lo crea en contexto mientras seguís diseñando."
+      },
+      {
+        "title": "Export Nativo del Navegador",
+        "description": "Renderizá video de calidad broadcast directo en tu navegador. Sin plugins, sin instalaciones, sin dependencias cloud."
+      }
+    ],
+    "changelog": {
+      "title": "Actualizaciones Recientes",
+      "entries": [
+        {
+          "version": "0.8.0",
+          "description": "Selección marquee y modificadores de selección estándar"
+        },
+        {
+          "version": "0.7.0",
+          "description": "Tipo de elemento grupo con multi-selección y agrupación"
+        },
+        {
+          "version": "0.6.0",
+          "description": "Snap-to-grid para elementos en el editor visual"
+        },
+        {
+          "version": "0.5.0",
+          "description": "Soporte de gradientes para texto, fondos y formas SVG"
+        }
+      ]
+    }
+  },
+  "footer": {
+    "tagline": "Animación & Diseño",
+    "links": [
+      { "label": "Estudio", "href": "/studio" },
+      { "label": "GitHub", "href": "https://github.com/cyqle/motif" }
+    ],
+    "copyright": "Cyqle"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "nav": {
+    "cta": "Coming Soon"
+  },
+  "hero": {
+    "tagline": "Animation & Design",
+    "headline": "Create with AI, not through it.",
+    "description": "Other tools hand everything to a black box. Motif gives you a full visual studio and a specialized AI agent that works beside you — so your creativity sets the direction while AI handles the heavy lifting.",
+    "cta": "Coming Soon",
+    "scrollHint": "See how it works"
+  },
+  "partnership": {
+    "label": "The Difference",
+    "heading": "Collaboration, Not Delegation.",
+    "description": "Prompt-to-video tools remove you from the creative process. Traditional editors leave you doing everything alone. Motif is neither — it's a shared workspace where human imagination and AI expertise meet.",
+    "cards": [
+      {
+        "side": "before",
+        "title": "Prompt-to-Video Tools",
+        "items": [
+          "Type a prompt, hope the AI guesses right",
+          "Zero control over composition or timing",
+          "Every output looks the same",
+          "Your creative vision gets lost in translation"
+        ]
+      },
+      {
+        "side": "after",
+        "title": "Creating with Motif",
+        "items": [
+          "Design hands-on while AI accelerates your work",
+          "Full control — adjust, override, refine anything",
+          "Your style, your choices, amplified by AI",
+          "The agent adapts to you, not the other way around"
+        ]
+      }
+    ]
+  },
+  "workflow": {
+    "label": "The Workflow",
+    "heading": "You Create. AI Amplifies.",
+    "description": "Start from a blank canvas or a conversation — either way, you stay in the driver's seat.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Start Your Way",
+        "description": "Build visually with drag-and-drop, ask the AI agent to scaffold a scene, or combine both. You choose how much creative control to keep at every step."
+      },
+      {
+        "number": "02",
+        "title": "Create Together",
+        "description": "Work side by side with the agent. It suggests transitions, generates assets, and improves timing — you accept, tweak, or override. Every decision is yours."
+      },
+      {
+        "number": "03",
+        "title": "Export & Ship",
+        "description": "Render broadcast-quality video straight from your browser. No external software. No cloud queues. Your animation, your creative fingerprint — ready to publish."
+      }
+    ]
+  },
+  "ecosystem": {
+    "label": "The Engine",
+    "heading": "Best of Both Worlds.",
+    "description": "The efficiency and expertise of a trained AI agent. The originality and taste that only a human brings. Together.",
+    "features": [
+      {
+        "title": "AI Creative Partner",
+        "description": "Not a black box — a collaborator. The agent suggests, generates, and refines, but you always have the final say."
+      },
+      {
+        "title": "59 Motion Presets",
+        "description": "Ten categories of production-ready animations — from subtle fades to cinematic decompositions. Apply with one click, customize to make them yours."
+      },
+      {
+        "title": "Visual + Code Editing",
+        "description": "Design visually with drag-and-drop controls. Drop into code for full precision. Both stay perfectly in sync."
+      },
+      {
+        "title": "Instant Preview",
+        "description": "See every change as you make it. No render wait, no preview queue. What you see is what you export."
+      },
+      {
+        "title": "On-the-Fly Asset Generation",
+        "description": "Need a shape, gradient, or element? Ask the agent — it creates it in context while you keep designing."
+      },
+      {
+        "title": "Browser-Native Export",
+        "description": "Render to broadcast-quality video directly in your browser. No plugins, no installs, no cloud dependencies."
+      }
+    ],
+    "changelog": {
+      "title": "Recent Updates",
+      "entries": [
+        {
+          "version": "0.8.0",
+          "description": "Marquee selection and standard selection modifiers"
+        },
+        {
+          "version": "0.7.0",
+          "description": "Group element type with multi-select and grouping"
+        },
+        {
+          "version": "0.6.0",
+          "description": "Snap-to-grid for elements in the visual editor"
+        },
+        {
+          "version": "0.5.0",
+          "description": "Gradient support for text, backgrounds, and SVG shapes"
+        }
+      ]
+    }
+  },
+  "footer": {
+    "tagline": "Animation & Design",
+    "links": [
+      { "label": "Studio", "href": "/studio" },
+      { "label": "GitHub", "href": "https://github.com/cyqle/motif" }
+    ],
+    "copyright": "Cyqle"
+  }
+}
