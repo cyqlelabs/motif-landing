@@ -5,6 +5,7 @@ import { ChevronDown } from 'lucide-react';
 import { useI18n } from '@/lib/landing/i18n';
 import { Logo } from './logo';
 import { ExplodingButton } from './exploding-button';
+import { FloatingIcons } from './floating-icons';
 
 const easeOut = [0.25, 0.46, 0.45, 0.94] as const;
 
@@ -41,9 +42,10 @@ export function HeroSection() {
   const { t } = useI18n();
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[100svh] px-4 sm:px-6 text-center">
+    <section className="relative flex flex-col items-center justify-center min-h-[100svh] px-4 sm:px-6 text-center overflow-hidden">
+      <FloatingIcons />
       <motion.div
-        className="flex flex-col items-center gap-4 sm:gap-6 max-w-4xl"
+        className="relative z-10 flex flex-col items-center gap-4 sm:gap-6 max-w-4xl"
         initial="hidden"
         animate="visible"
       >
@@ -99,7 +101,7 @@ export function HeroSection() {
       </motion.div>
 
       <motion.div
-        className="absolute bottom-10 flex flex-col items-center gap-2 text-muted-foreground"
+        className="absolute bottom-10 z-10 flex flex-col items-center gap-2 text-muted-foreground"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 0.8 }}

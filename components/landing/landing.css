@@ -44,3 +44,104 @@
   0%, 100% { opacity: 0.15; }
   50% { opacity: 0.25; }
 }
+
+/* X movement: gravity pull accelerates into center, brief processing, then expelled */
+@keyframes icon-stream {
+  0% {
+    transform: translateX(-60px);
+    animation-timing-function: cubic-bezier(0.65, 0, 1, 0.35); /* gravity pull — slow start, rushes toward center */
+  }
+  44% {
+    transform: translateX(calc(50vw - 10px));
+    animation-timing-function: ease-in-out;
+  }
+  56% {
+    transform: translateX(calc(50vw + 10px));
+    animation-timing-function: cubic-bezier(0.05, 0.8, 0.3, 1); /* expelled burst */
+  }
+  100% {
+    transform: translateX(calc(100vw + 60px));
+  }
+}
+
+/* Wave: Y-axis only, no rotation (rotation comes exclusively from morph) */
+@keyframes icon-wave-sm {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-15px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(15px); }
+}
+
+@keyframes icon-wave-md {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-30px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(30px); }
+}
+
+@keyframes icon-wave-lg {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-50px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(50px); }
+}
+
+/* Asset sucked into vortex: stretch → visible accelerating spin → consumed */
+@keyframes asset-morph {
+  0%, 28% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  34% {
+    opacity: 1;
+    transform: scaleX(1.3) scaleY(0.75) rotate(0deg);
+  }
+  38% {
+    opacity: 1;
+    transform: scale(0.7) rotate(180deg);
+  }
+  42% {
+    opacity: 0.9;
+    transform: scale(0.55) rotate(720deg);
+  }
+  46% {
+    opacity: 0.7;
+    transform: scale(0.4) rotate(2160deg);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0) rotate(3600deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(3600deg);
+  }
+}
+
+/* Icon expelled from vortex: visible decelerating spin → pop out */
+@keyframes icon-morph {
+  0%, 48% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.4) rotate(0deg);
+  }
+  54% {
+    opacity: 0.7;
+    transform: scale(0.5) rotate(1080deg);
+  }
+  58% {
+    opacity: 0.9;
+    transform: scale(0.7) rotate(1800deg);
+  }
+  64% {
+    opacity: 1;
+    transform: scale(1.2) rotate(2160deg);
+  }
+  72%, 100% {
+    opacity: 1;
+    transform: scale(1) rotate(2160deg);
+  }
+}
