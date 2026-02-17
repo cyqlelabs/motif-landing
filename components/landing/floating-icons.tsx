@@ -1,6 +1,7 @@
 'use client';
 
 import { useReducedMotion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
 /* ── gradient defs (Instagram) ── */
 
@@ -214,10 +215,135 @@ const streams: StreamItem[] = [
 
 const BASE_DELAY = 0.3;
 
+/* ── JS-driven positioning + vortex physics ──
+ *
+ * ALL positioning is computed in JS (no CSS icon-stream / icon-wave).
+ * This puts natural path and vortex path in the same coordinate space,
+ * so lerp-blending actually converges items to a shared center.
+ *
+ * CSS only handles: asset-morph / icon-morph (visual transformation).
+ */
+
+const VORTEX_SPEED = 22;
+const VORTEX_RADIUS = 65;
+const CENTER_X_PCT = 0.50;
+const CENTER_Y_PCT = 0.47;
+const PULL_START = 0.34;
+const FULL_VORTEX_START = 0.42;
+const FULL_VORTEX_END = 0.58;
+const PULL_END = 0.66;
+
+const WAVE_AMP: Record<string, number> = { sm: 15, md: 30, lg: 50 };
+
+function smoothstep(t: number) {
+  const c = Math.max(0, Math.min(1, t));
+  return c * c * (3 - 2 * c);
+}
+
+function lerp(a: number, b: number, t: number) {
+  return a + (b - a) * t;
+}
+
+function streamX(progress: number, vw: number): number {
+  const startX = -60;
+  const cx = vw / 2;
+  const endX = vw + 60;
+
+  if (progress <= 0.44) {
+    const t = progress / 0.44;
+    const eased = t * t;
+    return lerp(startX, cx - 10, eased);
+  } else if (progress <= 0.56) {
+    const t = (progress - 0.44) / 0.12;
+    return lerp(cx - 10, cx + 10, t);
+  } else {
+    const t = (progress - 0.56) / 0.44;
+    const eased = 1 - (1 - t) * (1 - t) * (1 - t);
+    return lerp(cx + 10, endX, eased);
+  }
+}
+
+function vortexWeight(progress: number): number {
+  if (progress < PULL_START || progress > PULL_END) return 0;
+  if (progress >= FULL_VORTEX_START && progress <= FULL_VORTEX_END) return 1;
+  if (progress < FULL_VORTEX_START) {
+    return smoothstep((progress - PULL_START) / (FULL_VORTEX_START - PULL_START));
+  }
+  return smoothstep(1 - (progress - FULL_VORTEX_END) / (PULL_END - FULL_VORTEX_END));
+}
+
 /* ── component ── */
 
 export function FloatingIcons() {
   const reducedMotion = useReducedMotion();
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const startRef = useRef(0);
+
+  useEffect(() => {
+    if (reducedMotion) return;
+
+    startRef.current = performance.now();
+    let frame: number;
+
+    function tick() {
+      const elapsed = (performance.now() - startRef.current) / 1000;
+      const vortexAngle = elapsed * VORTEX_SPEED;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const cx = CENTER_X_PCT * vw;
+      const cy = CENTER_Y_PCT * vh;
+
+      for (let i = 0; i < streams.length; i++) {
+        const el = itemRefs.current[i];
+        if (!el) continue;
+
+        const item = streams[i];
+        const totalDelay = BASE_DELAY + item.delay;
+        const itemTime = elapsed - totalDelay;
+
+        if (itemTime < 0) {
+          el.style.visibility = 'hidden';
+          continue;
+        }
+
+        el.style.visibility = 'visible';
+
+        const progress = (itemTime % item.speed) / item.speed;
+
+        const natX = streamX(progress, vw);
+        const waveSpeed = item.speed / 3.5;
+        const wavePhase = (itemTime % waveSpeed) / waveSpeed;
+        const waveY = -WAVE_AMP[item.wave] * Math.sin(wavePhase * Math.PI * 2);
+        const natY = (item.y / 100) * vh + waveY;
+
+        const w = vortexWeight(progress);
+
+        if (w === 0) {
+          el.style.transform = `translate(${natX.toFixed(1)}px,${natY.toFixed(1)}px)`;
+          continue;
+        }
+
+        const phase = (i / streams.length) * Math.PI * 2;
+        const angle = vortexAngle + phase;
+
+        const distFromCenter = Math.abs(progress - 0.50) / 0.16;
+        const spiralRadius = VORTEX_RADIUS * lerp(0.12, 1, Math.min(1, distFromCenter));
+
+        const vortexX = cx + spiralRadius * Math.cos(angle);
+        const vortexY = cy + spiralRadius * Math.sin(angle);
+
+        const finalX = lerp(natX, vortexX, w);
+        const finalY = lerp(natY, vortexY, w);
+
+        el.style.transform = `translate(${finalX.toFixed(1)}px,${finalY.toFixed(1)}px)`;
+      }
+
+      frame = requestAnimationFrame(tick);
+    }
+
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [reducedMotion]);
 
   if (reducedMotion) return null;
 
@@ -228,40 +354,32 @@ export function FloatingIcons() {
         const Asset = assetComponents[item.asset];
         const Icon = iconComponents[item.icon];
         const totalDelay = BASE_DELAY + item.delay;
-        const waveSpeed = +(item.speed / 3.5).toFixed(1);
 
         return (
           <div
             key={i}
-            className="absolute left-0"
+            ref={(el) => { itemRefs.current[i] = el; }}
+            className="absolute top-0 left-0"
             style={{
-              top: `${item.y}%`,
+              visibility: 'hidden',
               willChange: 'transform',
-              animation: `icon-stream ${item.speed}s linear ${totalDelay}s infinite backwards`,
             }}
           >
-            <div
-              style={{
-                willChange: 'transform',
-                animation: `icon-wave-${item.wave} ${waveSpeed}s ease-in-out ${totalDelay}s infinite`,
-              }}
-            >
-              <div className="relative" style={{ width: item.size, height: item.size, opacity: item.opacity }}>
-                <div
-                  style={{
-                    animation: `asset-morph ${item.speed}s linear ${totalDelay}s infinite backwards`,
-                  }}
-                >
-                  <Asset size={item.size} />
-                </div>
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    animation: `icon-morph ${item.speed}s linear ${totalDelay}s infinite backwards`,
-                  }}
-                >
-                  <Icon size={item.size} />
-                </div>
+            <div className="relative" style={{ width: item.size, height: item.size, opacity: item.opacity }}>
+              <div
+                style={{
+                  animation: `asset-morph ${item.speed}s linear ${totalDelay}s infinite backwards`,
+                }}
+              >
+                <Asset size={item.size} />
+              </div>
+              <div
+                className="absolute inset-0"
+                style={{
+                  animation: `icon-morph ${item.speed}s linear ${totalDelay}s infinite backwards`,
+                }}
+              >
+                <Icon size={item.size} />
               </div>
             </div>
           </div>
