@@ -68,7 +68,7 @@
         "description": "No es una caja negra — es un colaborador. El agente sugiere, genera y refina, pero la última palabra siempre es tuya."
       },
       {
-        "title": "80+ Presets y Efectos",
+        "title": "100+ Presets y Efectos",
         "description": "Animaciones, transiciones y efectos listos para producción — desde fades sutiles hasta flips 3D con perspectiva. Aplicar con un clic, personalizar para hacerlos tuyos."
       },
       {
@@ -87,28 +87,7 @@
         "title": "Export Nativo del Navegador",
         "description": "Renderizá video de calidad broadcast directo en tu navegador. Sin plugins, sin instalaciones, sin dependencias cloud."
       }
-    ],
-    "changelog": {
-      "title": "Actualizaciones Recientes",
-      "entries": [
-        {
-          "version": "0.8.0",
-          "description": "Selección marquee y modificadores de selección estándar"
-        },
-        {
-          "version": "0.7.0",
-          "description": "Tipo de elemento grupo con multi-selección y agrupación"
-        },
-        {
-          "version": "0.6.0",
-          "description": "Snap-to-grid para elementos en el editor visual"
-        },
-        {
-          "version": "0.5.0",
-          "description": "Soporte de gradientes para texto, fondos y formas SVG"
-        }
-      ]
-    }
+    ]
   },
   "footer": {
     "tagline": "Animación & Diseño",

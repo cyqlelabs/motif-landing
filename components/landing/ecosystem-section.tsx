@@ -2,7 +2,6 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Badge } from '@/components/ui/badge';
 import { useI18n, type Translations } from '@/lib/landing/i18n';
 
 function FeatureCard({ feature, index }: { feature: Translations['ecosystem']['features'][number]; index: number }) {
@@ -51,33 +50,6 @@ export function EcosystemSection() {
             <FeatureCard key={feature.title} feature={feature} index={i} />
           ))}
         </div>
-
-        <motion.div
-          className="mt-12 sm:mt-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.5 }}
-        >
-          <h3 className="text-xl font-semibold mb-6">{t.ecosystem.changelog.title}</h3>
-          <div className="space-y-4">
-            {t.ecosystem.changelog.entries.map((entry, i) => (
-              <motion.div
-                key={entry.version}
-                className="flex items-center gap-3 sm:gap-4 rounded-xl border border-border/50 bg-card/30 px-4 sm:px-5 py-3"
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: i * 0.08 }}
-              >
-                <Badge variant="secondary" className="shrink-0 font-mono text-xs">
-                  v{entry.version}
-                </Badge>
-                <span className="text-sm text-muted-foreground">{entry.description}</span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

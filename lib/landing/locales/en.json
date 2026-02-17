@@ -68,7 +68,7 @@
         "description": "Not a black box — a collaborator. The agent suggests, generates, and refines, but you always have the final say."
       },
       {
-        "title": "80+ Presets & Effects",
+        "title": "100+ Presets & Effects",
         "description": "Production-ready animations, transitions, and effects — from subtle fades to 3D perspective flips. Apply with one click, customize to make them yours."
       },
       {
@@ -87,28 +87,7 @@
         "title": "Browser-Native Export",
         "description": "Render to broadcast-quality video directly in your browser. No plugins, no installs, no cloud dependencies."
       }
-    ],
-    "changelog": {
-      "title": "Recent Updates",
-      "entries": [
-        {
-          "version": "0.8.0",
-          "description": "Marquee selection and standard selection modifiers"
-        },
-        {
-          "version": "0.7.0",
-          "description": "Group element type with multi-select and grouping"
-        },
-        {
-          "version": "0.6.0",
-          "description": "Snap-to-grid for elements in the visual editor"
-        },
-        {
-          "version": "0.5.0",
-          "description": "Gradient support for text, backgrounds, and SVG shapes"
-        }
-      ]
-    }
+    ]
   },
   "footer": {
     "tagline": "Animation & Design",
