@@ -57,10 +57,20 @@ export function HeroSection() {
           <Logo className="w-20 h-20 sm:w-28 sm:h-28 text-primary" />
         </motion.div>
 
-        <h1 className="text-[clamp(3.5rem,12vw,10rem)] font-bold leading-[0.9] tracking-tighter">
+        <motion.h1
+          className="text-[clamp(3.5rem,12vw,10rem)] font-bold leading-[0.9] tracking-tighter"
+          animate={{
+            textShadow: [
+              '0 0 8px hsl(25 95% 53% / 0.15), 0 0 20px hsl(25 95% 53% / 0.08)',
+              '0 0 12px hsl(25 95% 53% / 0.3), 0 0 35px hsl(25 95% 53% / 0.12)',
+              '0 0 8px hsl(25 95% 53% / 0.15), 0 0 20px hsl(25 95% 53% / 0.08)',
+            ],
+          }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        >
           <AnimatedWord text="motif" />
           <AnimatedWord text=".ad" className="text-primary" startIndex={5} />
-        </h1>
+        </motion.h1>
 
         <motion.p
           className="text-lg md:text-xl text-muted-foreground tracking-[0.3em] uppercase font-light"
