@@ -93,7 +93,9 @@
     "tagline": "Animación & Diseño",
     "links": [
       { "label": "Estudio", "href": "/studio" },
-      { "label": "GitHub", "href": "https://github.com/cyqle/motif" }
+      { "label": "GitHub", "href": "https://github.com/cyqle/motif" },
+      { "label": "Privacidad", "href": "/privacy" },
+      { "label": "Términos", "href": "/terms" }
     ],
     "copyright": "Cyqle"
   }
