@@ -145,3 +145,59 @@
     transform: scale(1) rotate(2160deg);
   }
 }
+
+/* ── Product Showcase: smoke-dissolve frame ── */
+
+.screenshot-smoke-frame {
+  mask-image:
+    radial-gradient(ellipse 92% 85% at 50% 50%, black 60%, transparent 100%);
+  -webkit-mask-image:
+    radial-gradient(ellipse 92% 85% at 50% 50%, black 60%, transparent 100%);
+}
+
+/* Animated smoke tendrils around the frame edges */
+.smoke-tendril {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+}
+
+.smoke-tendril-1 {
+  background: radial-gradient(ellipse 120% 30% at 50% 0%, hsl(25 30% 15% / 0.5) 0%, transparent 70%);
+  animation: smoke-drift-1 6s ease-in-out infinite;
+}
+
+.smoke-tendril-2 {
+  background: radial-gradient(ellipse 120% 30% at 50% 100%, hsl(25 30% 15% / 0.5) 0%, transparent 70%);
+  animation: smoke-drift-2 7s ease-in-out infinite;
+}
+
+.smoke-tendril-3 {
+  background: radial-gradient(ellipse 30% 120% at 0% 50%, hsl(25 20% 10% / 0.4) 0%, transparent 70%);
+  animation: smoke-drift-3 8s ease-in-out infinite;
+}
+
+.smoke-tendril-4 {
+  background: radial-gradient(ellipse 30% 120% at 100% 50%, hsl(25 20% 10% / 0.4) 0%, transparent 70%);
+  animation: smoke-drift-4 7.5s ease-in-out infinite;
+}
+
+@keyframes smoke-drift-1 {
+  0%, 100% { transform: translateY(-2px) scaleX(1); opacity: 0.6; }
+  50% { transform: translateY(-8px) scaleX(1.08); opacity: 0.9; }
+}
+
+@keyframes smoke-drift-2 {
+  0%, 100% { transform: translateY(2px) scaleX(1); opacity: 0.6; }
+  50% { transform: translateY(8px) scaleX(1.05); opacity: 0.85; }
+}
+
+@keyframes smoke-drift-3 {
+  0%, 100% { transform: translateX(-2px) scaleY(1); opacity: 0.5; }
+  50% { transform: translateX(-6px) scaleY(1.06); opacity: 0.8; }
+}
+
+@keyframes smoke-drift-4 {
+  0%, 100% { transform: translateX(2px) scaleY(1); opacity: 0.5; }
+  50% { transform: translateX(6px) scaleY(1.04); opacity: 0.75; }
+}

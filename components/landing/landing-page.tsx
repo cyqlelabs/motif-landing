@@ -7,6 +7,7 @@ import { Nav } from './nav';
 import { HeroSection } from './hero-section';
 import { PartnershipSection } from './partnership-section';
 import { WorkflowSection } from './workflow-section';
+import { ProductShowcase } from './product-showcase';
 import { EcosystemSection } from './ecosystem-section';
 import { Footer } from './footer';
 
@@ -18,6 +19,7 @@ export function LandingPage() {
         <Nav />
         <main>
           <HeroSection />
+          <ProductShowcase />
           <PartnershipSection />
           <WorkflowSection />
           <EcosystemSection />
