@@ -276,6 +276,7 @@ function vortexWeight(progress: number): number {
 
 export function FloatingIcons() {
   const reducedMotion = useReducedMotion();
+  const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const startRef = useRef(0);
 
@@ -286,10 +287,14 @@ export function FloatingIcons() {
     let frame: number;
 
     function tick() {
+      const container = containerRef.current;
+      if (!container) { frame = requestAnimationFrame(tick); return; }
+
       const elapsed = (performance.now() - startRef.current) / 1000;
       const vortexAngle = elapsed * VORTEX_SPEED;
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
+      const rect = container.getBoundingClientRect();
+      const vw = rect.width;
+      const vh = rect.height;
       const cx = CENTER_X_PCT * vw;
       const cy = CENTER_Y_PCT * vh;
 
@@ -318,8 +323,10 @@ export function FloatingIcons() {
 
         const w = vortexWeight(progress);
 
+        const halfSize = item.size / 2;
+
         if (w === 0) {
-          el.style.transform = `translate(${natX.toFixed(1)}px,${natY.toFixed(1)}px)`;
+          el.style.transform = `translate(${(natX - halfSize).toFixed(1)}px,${(natY - halfSize).toFixed(1)}px)`;
           continue;
         }
 
@@ -332,8 +339,8 @@ export function FloatingIcons() {
         const vortexX = cx + spiralRadius * Math.cos(angle);
         const vortexY = cy + spiralRadius * Math.sin(angle);
 
-        const finalX = lerp(natX, vortexX, w);
-        const finalY = lerp(natY, vortexY, w);
+        const finalX = lerp(natX, vortexX, w) - halfSize;
+        const finalY = lerp(natY, vortexY, w) - halfSize;
 
         el.style.transform = `translate(${finalX.toFixed(1)}px,${finalY.toFixed(1)}px)`;
       }
@@ -348,7 +355,7 @@ export function FloatingIcons() {
   if (reducedMotion) return null;
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
       <GradientDefs />
       {streams.map((item, i) => {
         const Asset = assetComponents[item.asset];
