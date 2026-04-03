@@ -10,22 +10,28 @@ import { WorkflowSection } from './workflow-section';
 import { ProductShowcase } from './product-showcase';
 import { EcosystemSection } from './ecosystem-section';
 import { Footer } from './footer';
+import { FullPageScroller } from './full-page-scroller';
 
 export function LandingPage() {
   return (
     <I18nProvider>
-      <div className="relative min-h-screen scroll-smooth">
-        <AnimatedBg />
-        <Nav />
-        <main>
-          <HeroSection />
-          <ProductShowcase />
-          <PartnershipSection />
-          <WorkflowSection />
-          <EcosystemSection />
-        </main>
-        <Footer />
-      </div>
+      <AnimatedBg />
+      <FullPageScroller overlay={<Nav />}>
+        {[
+          <HeroSection key="hero" />,
+          <ProductShowcase key="product" />,
+          <PartnershipSection key="partnership" />,
+          <WorkflowSection key="workflow" />,
+          <div key="ecosystem-footer" className="fp-section-scrollable">
+            <div className="min-h-full flex flex-col">
+              <div className="flex-1 flex items-center">
+                <EcosystemSection />
+              </div>
+              <Footer />
+            </div>
+          </div>,
+        ]}
+      </FullPageScroller>
     </I18nProvider>
   );
 }

@@ -1,3 +1,92 @@
+/* ── Full-page scroller layout ── */
+
+.fp-root {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.fp-track {
+  will-change: transform;
+}
+
+.fp-section {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Dot navigation */
+.fp-dots {
+  position: fixed;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.fp-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: hsl(var(--muted-foreground) / 0.25);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fp-dot:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+  transform: scale(1.3);
+}
+
+.fp-dot-active {
+  background: hsl(var(--primary));
+  height: 1.5rem;
+  border-radius: 9999px;
+}
+
+/* Hide scrollbar globally */
+html, body {
+  overflow: hidden;
+  height: 100%;
+  height: 100dvh;
+}
+
+/* Scrollable section — allows internal scroll when content overflows viewport */
+.fp-section-scrollable {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.fp-section-scrollable::-webkit-scrollbar {
+  display: none;
+}
+
+/* Section content entrance animations */
+.fp-section-content {
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fp-section-content[data-active="false"] {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.fp-section-content[data-active="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @keyframes orb-float-1 {
   0%, 100% { transform: translate(0%, 0%) scale(1); }
   25% { transform: translate(10%, -15%) scale(1.1); }

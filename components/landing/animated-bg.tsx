@@ -1,6 +1,6 @@
 'use client';
 
-import { useScroll, useTransform, motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 const orbs = [
   {
@@ -35,12 +35,6 @@ const orbs = [
 
 export function AnimatedBg() {
   const reducedMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll();
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -120]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -160]);
-  const y4 = useTransform(scrollYProgress, [0, 1], [0, -60]);
-  const parallaxValues = [y1, y2, y3, y4];
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none opacity-20">
@@ -55,7 +49,6 @@ export function AnimatedBg() {
             filter: 'blur(100px)',
             animation: reducedMotion ? 'none' : `${orb.animation} ${orb.duration} ease-in-out infinite`,
             willChange: 'transform',
-            y: reducedMotion ? 0 : parallaxValues[i],
           }}
         />
       ))}

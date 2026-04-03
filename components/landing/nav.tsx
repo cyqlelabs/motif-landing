@@ -1,23 +1,19 @@
 'use client';
 
-import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { useState } from 'react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useI18n, type Locale } from '@/lib/landing/i18n';
 import { Logo } from './logo';
 import { ExplodingButton } from './exploding-button';
+import { useScroller } from './full-page-scroller';
 
 const localeLabels: Record<Locale, string> = { en: 'EN', es: 'ES' };
 const localeOrder: Locale[] = ['en', 'es'];
 
 export function Nav() {
-  const [visible, setVisible] = useState(false);
-  const { scrollY } = useScroll();
+  const { activeSection } = useScroller();
   const { locale, t, setLocale } = useI18n();
-
-  useMotionValueEvent(scrollY, 'change', (latest) => {
-    setVisible(latest > 100);
-  });
+  const visible = activeSection > 0;
 
   return (
     <motion.header

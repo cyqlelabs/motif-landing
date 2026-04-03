@@ -6,6 +6,7 @@ import { useI18n } from '@/lib/landing/i18n';
 import { Logo } from './logo';
 import { ExplodingButton } from './exploding-button';
 import { FloatingIcons } from './floating-icons';
+import { useScroller } from './full-page-scroller';
 
 const easeOut = [0.25, 0.46, 0.45, 0.94] as const;
 
@@ -40,9 +41,10 @@ function AnimatedWord({ text, className, startIndex = 0 }: { text: string; class
 
 export function HeroSection() {
   const { t } = useI18n();
+  const { goNext } = useScroller();
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[100svh] px-4 sm:px-6 text-center overflow-hidden">
+    <div className="relative flex flex-col items-center justify-center h-full px-4 sm:px-6 text-center overflow-hidden">
       <FloatingIcons />
       <motion.div
         className="relative z-10 flex flex-col items-center gap-4 sm:gap-6 max-w-4xl"
@@ -110,11 +112,12 @@ export function HeroSection() {
         </motion.div>
       </motion.div>
 
-      <motion.div
-        className="absolute bottom-10 z-10 flex flex-col items-center gap-2 text-muted-foreground"
+      <motion.button
+        className="absolute bottom-10 z-10 flex flex-col items-center gap-2 text-muted-foreground cursor-pointer bg-transparent border-none"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 0.8 }}
+        onClick={goNext}
       >
         <span className="text-xs tracking-widest uppercase">{t.hero.scrollHint}</span>
         <motion.div
@@ -123,7 +126,7 @@ export function HeroSection() {
         >
           <ChevronDown className="w-5 h-5" />
         </motion.div>
-      </motion.div>
-    </section>
+      </motion.button>
+    </div>
   );
 }
