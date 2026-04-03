@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import { useI18n, type Translations } from '@/lib/landing/i18n';
 import { useSectionActive } from './full-page-scroller';
 
-const expo = [0.16, 1, 0.3, 1];
+const expo = [0.16, 1, 0.3, 1] as const;
 
 /*
   Reveals:

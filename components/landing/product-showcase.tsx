@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import { useSectionActive } from './full-page-scroller';
 
-const expo = [0.16, 1, 0.3, 1];
+const expo = [0.16, 1, 0.3, 1] as const;
 
 export function ProductShowcase() {
   const isActive = useSectionActive();

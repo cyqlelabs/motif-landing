@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useI18n, type Translations } from '@/lib/landing/i18n';
 import { useSectionActive } from './full-page-scroller';
 
-const expo = [0.16, 1, 0.3, 1];
+const expo = [0.16, 1, 0.3, 1] as const;
 
 /*
   Reveals — each feature card enters from a unique direction based on grid position:
