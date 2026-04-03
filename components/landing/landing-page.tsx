@@ -24,7 +24,7 @@ export function LandingPage() {
           <WorkflowSection key="workflow" />,
           <div key="ecosystem-footer" className="fp-section-scrollable">
             <div className="min-h-full flex flex-col">
-              <div className="flex-1 flex items-center">
+              <div className="flex-1 flex items-start md:items-center pt-16 md:pt-0">
                 <EcosystemSection />
               </div>
               <Footer />

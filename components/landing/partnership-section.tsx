@@ -79,9 +79,9 @@ export function PartnershipSection() {
   const show = isActive && !reduced;
 
   return (
-    <div className="flex items-center justify-center h-full px-4 sm:px-6">
+    <div className="flex items-start md:items-center justify-center h-full px-4 sm:px-6 pt-16 md:pt-0">
       <div className="max-w-5xl w-full mx-auto">
-        <div className="text-center mb-10 sm:mb-16">
+        <div className="text-center mb-6 sm:mb-16">
           {/* Label drops from above */}
           <motion.span
             className="text-xs tracking-[0.3em] uppercase text-primary font-medium inline-block"
