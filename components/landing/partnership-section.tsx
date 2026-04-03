@@ -79,7 +79,8 @@ export function PartnershipSection() {
   const show = isActive && !reduced;
 
   return (
-    <div className="flex items-start md:items-center justify-center h-full px-4 sm:px-6 pt-16 md:pt-0">
+    <div className="fp-section-scrollable">
+    <div className="flex items-start md:items-center justify-center min-h-full px-4 sm:px-6 pt-16 md:pt-0 pb-8">
       <div className="max-w-5xl w-full mx-auto">
         <div className="text-center mb-6 sm:mb-16">
           {/* Label drops from above */}
@@ -119,6 +120,7 @@ export function PartnershipSection() {
           ))}
         </div>
       </div>
+    </div>
     </div>
   );
 }
