@@ -7,7 +7,14 @@
     "headline": "Creá con IA, no a través de ella.",
     "description": "Dejá atrás la 'caja negra' con un estudio visual y un agente de IA que trabajen codo a codo con vos. Tu creatividad lidera, nuestra IA ejecuta.",
     "cta": "Próximamente",
-    "scrollHint": "Descubrí cómo funciona"
+    "scrollHint": "Descubrí cómo funciona",
+    "waitlist": {
+      "placeholder": "tu@email.com",
+      "cta": "Unirme",
+      "success": "Estás en la lista",
+      "successSub": "Te avisamos cuando Motif abra.",
+      "error": "Algo salió mal. Intentalo de nuevo."
+    }
   },
   "partnership": {
     "label": "La Diferencia",

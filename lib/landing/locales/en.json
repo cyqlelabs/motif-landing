@@ -7,7 +7,14 @@
     "headline": "Create with AI, not through it.",
     "description": "Move beyond the black box with a visual studio and AI agent that work beside you. Your creativity leads, our AI executes.",
     "cta": "Coming Soon",
-    "scrollHint": "See how it works"
+    "scrollHint": "See how it works",
+    "waitlist": {
+      "placeholder": "your@email.com",
+      "cta": "Join Waitlist",
+      "success": "You're on the list",
+      "successSub": "We'll reach out when Motif launches.",
+      "error": "Something went wrong. Please try again."
+    }
   },
   "partnership": {
     "label": "The Difference",
