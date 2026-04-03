@@ -55,6 +55,7 @@ export function FullPageScroller({
   const [dir, setDir] = useState(1);
   const lockRef = useRef(false);
   const touchYRef = useRef(0);
+  const touchScrollTopRef = useRef(0);
   const trackRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
   const total = children.length;
@@ -114,6 +115,10 @@ export function FullPageScroller({
   useEffect(() => {
     const onStart = (e: TouchEvent) => {
       touchYRef.current = e.touches[0].clientY;
+      // Snapshot scroll position before the swipe so edge detection
+      // is based on where the user started, not where they ended up.
+      const el = getScrollable();
+      touchScrollTopRef.current = el ? el.scrollTop : 0;
     };
     const onEnd = (e: TouchEvent) => {
       if (lockRef.current) return;
@@ -122,8 +127,9 @@ export function FullPageScroller({
 
       const el = getScrollable();
       if (el) {
-        const atTop = el.scrollTop <= 0;
-        const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 2;
+        const startTop = touchScrollTopRef.current;
+        const atTop = startTop <= 0;
+        const atBottom = startTop + el.clientHeight >= el.scrollHeight - 2;
         if (dy > 0 && !atBottom) return;
         if (dy < 0 && !atTop) return;
       }
@@ -184,7 +190,7 @@ export function FullPageScroller({
         <motion.div
           ref={trackRef}
           className="fp-track"
-          animate={{ y: `${-active * 100}vh` }}
+          animate={{ y: `${-active * 100}dvh` }}
           transition={{
             duration: DURATION,
             ease: [0.16, 1, 0.3, 1], // ease-out-expo
