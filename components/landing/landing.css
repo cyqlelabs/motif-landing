@@ -51,8 +51,8 @@
   border-radius: 9999px;
 }
 
-/* Hide scrollbar globally */
-html, body {
+/* Hide scrollbar when fullpage scroller is active */
+html:has(.fp-root), html:has(.fp-root) body {
   overflow: hidden;
   height: 100%;
   height: 100dvh;
