@@ -10,7 +10,7 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'Organization',
-      name: 'Cyqle',
+      name: 'CyqleLabs',
       url: 'https://motif.ad',
       logo: 'https://motif.ad/favicon.svg',
     },

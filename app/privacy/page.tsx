@@ -33,7 +33,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-foreground text-xl font-semibold mb-3">1. Overview</h2>
             <p>
-              Cyqle (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) operates the Motif website
+              CyqleLabs (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) operates the Motif website
               and service (&quot;Service&quot;). This Privacy Policy explains what information we
               collect, how we use it, and your rights regarding your data. By using the Service, you
               agree to the practices described here.
@@ -244,7 +244,7 @@ export default function PrivacyPage() {
             <Link href="/terms" className="hover:text-foreground transition-colors">
               Terms of Service
             </Link>
-            <span>&copy; {new Date().getFullYear()} Cyqle</span>
+            <span>&copy; {new Date().getFullYear()} CyqleLabs</span>
           </div>
         </div>
       </footer>

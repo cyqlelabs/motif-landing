@@ -34,7 +34,7 @@ export default function TermsPage() {
             <h2 className="text-foreground text-xl font-semibold mb-3">1. Acceptance of Terms</h2>
             <p>
               By accessing or using the Motif website and any associated services (collectively, the
-              &quot;Service&quot;) operated by Cyqle (&quot;we&quot;, &quot;us&quot;, or
+              &quot;Service&quot;) operated by CyqleLabs (&quot;we&quot;, &quot;us&quot;, or
               &quot;our&quot;), you agree to be bound by these Terms of Service (&quot;Terms&quot;).
               If you do not agree to these Terms, do not use the Service.
             </p>
@@ -102,7 +102,7 @@ export default function TermsPage() {
             </h2>
             <p>
               All content, software, trademarks, logos, and other materials associated with the
-              Service are the property of Cyqle or its licensors and are protected by applicable
+              Service are the property of CyqleLabs or its licensors and are protected by applicable
               intellectual property laws.
             </p>
             <p className="mt-3">
@@ -145,7 +145,7 @@ export default function TermsPage() {
               9. Limitation of Liability
             </h2>
             <p>
-              To the fullest extent permitted by law, Cyqle and its affiliates, officers, employees,
+              To the fullest extent permitted by law, CyqleLabs and its affiliates, officers, employees,
               and licensors shall not be liable for any indirect, incidental, special, consequential,
               or punitive damages arising out of or related to your use of the Service, even if we
               have been advised of the possibility of such damages.
@@ -204,7 +204,7 @@ export default function TermsPage() {
             <Link href="/privacy" className="hover:text-foreground transition-colors">
               Privacy Policy
             </Link>
-            <span>&copy; {new Date().getFullYear()} Cyqle</span>
+            <span>&copy; {new Date().getFullYear()} CyqleLabs</span>
           </div>
         </div>
       </footer>

@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     'AI creative partner',
     'collaborative animation',
   ],
-  authors: [{ name: 'Cyqle' }],
-  creator: 'Cyqle',
-  publisher: 'Cyqle',
+  authors: [{ name: 'CyqleLabs' }],
+  creator: 'CyqleLabs',
+  publisher: 'CyqleLabs',
   formatDetection: { telephone: false },
   openGraph: {
     type: 'website',
