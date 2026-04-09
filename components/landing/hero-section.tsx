@@ -51,6 +51,15 @@ export function HeroSection() {
         initial="hidden"
         animate="visible"
       >
+        {/* Contrast backdrop — sits behind all text content */}
+        <div
+          className="absolute inset-0 -z-10 pointer-events-none"
+          style={{
+            inset: '-10% -18%',
+            background: 'radial-gradient(ellipse at center, hsl(var(--background) / 0.72) 30%, transparent 75%)',
+            filter: 'blur(40px)',
+          }}
+        />
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
