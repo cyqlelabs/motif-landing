@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import { useSectionActive } from './full-page-scroller';
+import { FloatingIcons } from './floating-icons';
 
 const expo = [0.16, 1, 0.3, 1] as const;
 
@@ -13,6 +14,7 @@ export function ProductShowcase() {
 
   return (
     <div className="relative flex items-center justify-center h-full px-4 sm:px-6 overflow-hidden">
+      <FloatingIcons />
       <div className="relative max-w-6xl w-full mx-auto">
         {/* Ambient glow — scales in from nothing */}
         <motion.div
