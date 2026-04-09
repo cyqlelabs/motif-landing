@@ -72,6 +72,13 @@ export function VideoMatrixBg() {
       loadVideo(i, MATRIX_VIDEOS[i % MATRIX_VIDEOS.length]);
     }
 
+    /* ── on ended: flip to a different video at a random frame ── */
+    const endedHandlers = videosRef.current.map((vid, i) => {
+      const handler = () => flipCell(i, true);
+      vid?.addEventListener('ended', handler);
+      return handler;
+    });
+
     /* ── one-shot reveal (edge → face) ── */
     function revealCell(i: number) {
       const cell = cellsRef.current[i];
@@ -84,9 +91,10 @@ export function VideoMatrixBg() {
     }
 
     /* ── spotlight flip: fold → swap video → unfold ── */
-    function flipCell(i: number) {
+    function flipCell(i: number, force = false) {
       const cell = cellsRef.current[i];
       if (!cell || flippingRef.current[i]) return;
+      if (!force && performance.now() - lastFlipRef.current[i] < MIN_FLIP_INTERVAL_MS) return;
       flippingRef.current[i] = true;
       lastFlipRef.current[i] = performance.now();
 
@@ -167,12 +175,11 @@ export function VideoMatrixBg() {
 
         for (let i = 0; i < CELL_COUNT; i++) {
           if (flippingRef.current[i]) continue;
-          if (now - lastFlipRef.current[i] < MIN_FLIP_INTERVAL_MS) continue;
 
           const col = i % cols;
           const row = Math.floor(i / cols);
           if (Math.hypot(x - (col + 0.5) * cellW, y - (row + 0.5) * cellH) < triggerR) {
-            flipCell(i);
+            flipCell(i, false);
           }
         }
       }
@@ -188,6 +195,9 @@ export function VideoMatrixBg() {
       cancelAnimationFrame(rafId);
       timers.forEach((t) => clearTimeout(t));
       timers.length = 0;
+      videosRef.current.forEach((vid, i) => {
+        vid?.removeEventListener('ended', endedHandlers[i]);
+      });
     };
   }, [reducedMotion]);
 
@@ -202,7 +212,6 @@ export function VideoMatrixBg() {
             <video
               ref={(el) => { videosRef.current[i] = el; }}
               muted
-              loop
               playsInline
               preload="metadata"
               className="absolute inset-0 w-full h-full object-cover"
