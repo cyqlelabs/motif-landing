@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useI18n } from '@/lib/landing/i18n';
 import { Logo } from './logo';
-import { FloatingIcons } from './floating-icons';
+import { VideoMatrixBg } from './video-matrix-bg';
 import { WaitlistForm } from './waitlist-form';
 import { useScroller } from './full-page-scroller';
 
@@ -45,7 +45,7 @@ export function HeroSection() {
 
   return (
     <div className="relative flex flex-col items-center justify-center h-full px-4 sm:px-6 text-center overflow-hidden">
-      <FloatingIcons />
+      <VideoMatrixBg />
       <motion.div
         className="relative z-10 flex flex-col items-center gap-4 sm:gap-6 max-w-4xl"
         initial="hidden"
