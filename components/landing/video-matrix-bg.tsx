@@ -204,6 +204,13 @@ export function VideoMatrixBg() {
   if (reducedMotion) return null;
 
   return (
+    <>
+    {/* Hidden preload pool — primes browser cache for all videos before cells request them */}
+    <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', opacity: 0, pointerEvents: 'none' }} aria-hidden="true">
+      {MATRIX_VIDEOS.map((src) => (
+        <video key={src} src={src} muted playsInline preload="auto" />
+      ))}
+    </div>
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
       {/* 3D video grid */}
       <div ref={gridRef} className="vmx-grid absolute inset-0">
@@ -213,7 +220,7 @@ export function VideoMatrixBg() {
               ref={(el) => { videosRef.current[i] = el; }}
               muted
               playsInline
-              preload="metadata"
+              preload="auto"
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
@@ -238,5 +245,6 @@ export function VideoMatrixBg() {
       {/* Scanlines */}
       <div className="vmx-scanlines absolute inset-0" />
     </div>
+    </>
   );
 }
