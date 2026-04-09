@@ -305,7 +305,11 @@ html:has(.fp-root), html:has(.fp-root) body {
 }
 
 @media (max-width: 639px) {
-  .vmx-grid { grid-template-columns: repeat(2, 1fr); }
+  .vmx-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-auto-rows: 0;
+  }
 }
 
 /* Cells start edge-on; JS transitions them to rotateY(0) on reveal */
