@@ -53,6 +53,14 @@ ffmpeg -i "$INPUT" \
 ORIGINAL_SIZE=$(du -sh "$INPUT" | cut -f1)
 OUTPUT_SIZE=$(du -sh "$OUTPUT" | cut -f1)
 echo "Done: $ORIGINAL_SIZE → $OUTPUT_SIZE  ($OUTPUT)"
-echo ""
-echo "Add to public/videos/videos.json:"
-echo "  \"/videos/$BASENAME.mp4\""
+
+# Add to videos.json
+JSON_FILE="$OUT_DIR/videos.json"
+ENTRY="/videos/$BASENAME.mp4"
+
+if [[ -f "$JSON_FILE" ]] && jq -e --arg e "$ENTRY" 'index($e) != null' "$JSON_FILE" > /dev/null 2>&1; then
+  echo "Already in videos.json: $ENTRY"
+else
+  jq --arg e "$ENTRY" '. + [$e]' "$JSON_FILE" > "$JSON_FILE.tmp" && mv "$JSON_FILE.tmp" "$JSON_FILE"
+  echo "Added to videos.json: $ENTRY"
+fi
